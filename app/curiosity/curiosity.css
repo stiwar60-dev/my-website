@@ -1,0 +1,446 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Courier+Prime:wght@400;700&family=Inter:wght@300;400;500;600&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+.curiosity-page {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 50%, #0f1428 100%);
+  color: #e8e4d0;
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+}
+
+.curiosity-page.phase-enter {
+  animation: page-fade-in 1.2s ease-out;
+}
+
+@keyframes page-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* ===== MAIN SECTION ===== */
+
+.curiosity-main {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 40px;
+}
+
+/* ===== HEADER ===== */
+
+.curiosity-header {
+  text-align: center;
+  margin-bottom: 60px;
+  animation: header-slide-in 1.2s ease-out 0.2s both;
+}
+
+@keyframes header-slide-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.curiosity-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(3.5rem, 8vw, 6rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  margin: 0 0 20px 0;
+  line-height: 1;
+}
+
+.curiosity-subtitle {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(0.95rem, 2vw, 1.1rem);
+  color: rgba(232, 228, 208, 0.7);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.8;
+  letter-spacing: 0.3px;
+}
+
+/* ===== CONTENT AREA ===== */
+
+.curiosity-content {
+  width: 100%;
+  max-width: 800px;
+  animation: content-fade-in 1.2s ease-out 0.4s both;
+}
+
+@keyframes content-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== INTRO VIEW ===== */
+
+.curiosity-intro {
+  text-align: center;
+}
+
+.curiosity-intro-text {
+  font-size: 1.05rem;
+  line-height: 1.9;
+  color: rgba(232, 228, 208, 0.85);
+  margin-bottom: 50px;
+  letter-spacing: 0.2px;
+}
+
+.curiosity-actions {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-bottom: 50px;
+  flex-wrap: wrap;
+}
+
+.curiosity-action-button {
+  padding: 14px 32px;
+  border: 1px solid rgba(232, 228, 208, 0.3);
+  border-radius: 6px;
+  background: transparent;
+  color: #e8e4d0;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  letter-spacing: 0.3px;
+}
+
+.curiosity-action-button:hover {
+  background: rgba(232, 228, 208, 0.1);
+  border-color: rgba(232, 228, 208, 0.6);
+}
+
+.curiosity-action-button.primary {
+  background: rgba(232, 228, 208, 0.15);
+  border-color: rgba(232, 228, 208, 0.5);
+}
+
+.curiosity-action-button.primary:hover {
+  background: rgba(232, 228, 208, 0.25);
+  border-color: rgba(232, 228, 208, 0.8);
+}
+
+.curiosity-intro-footer {
+  font-size: 0.85rem;
+  color: rgba(232, 228, 208, 0.5);
+  letter-spacing: 0.2px;
+}
+
+/* ===== DESK VIEW ===== */
+
+.curiosity-desk-view {
+  position: relative;
+}
+
+.curiosity-desk-close {
+  position: absolute;
+  top: -50px;
+  left: 0;
+  background: none;
+  border: none;
+  color: rgba(232, 228, 208, 0.6);
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: color 0.2s ease;
+  padding: 8px;
+}
+
+.curiosity-desk-close:hover {
+  color: rgba(232, 228, 208, 1);
+}
+
+.curiosity-scraps-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+  padding: 20px 0;
+}
+
+.curiosity-scrap-thumbnail {
+  padding: 20px;
+  border: 1px solid rgba(232, 228, 208, 0.2);
+  border-radius: 8px;
+  background: rgba(232, 228, 208, 0.05);
+  color: #e8e4d0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.curiosity-scrap-thumbnail:hover {
+  background: rgba(232, 228, 208, 0.1);
+  border-color: rgba(232, 228, 208, 0.4);
+  transform: translateY(-2px);
+}
+
+.scrap-type {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: rgba(232, 228, 208, 0.5);
+}
+
+.scrap-preview {
+  font-size: 0.95rem;
+  line-height: 1.4;
+  color: rgba(232, 228, 208, 0.8);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+/* ===== READER VIEW ===== */
+
+.curiosity-reader {
+  position: relative;
+  padding: 40px;
+  border: 1px solid rgba(232, 228, 208, 0.2);
+  border-radius: 12px;
+  background: rgba(232, 228, 208, 0.03);
+  backdrop-filter: blur(10px);
+  animation: reader-slide-in 0.5s ease-out;
+}
+
+@keyframes reader-slide-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.curiosity-reader-close {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: none;
+  border: none;
+  color: rgba(232, 228, 208, 0.6);
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: color 0.2s ease;
+  padding: 8px;
+}
+
+.curiosity-reader-close:hover {
+  color: rgba(232, 228, 208, 1);
+}
+
+.curiosity-reader-inner {
+  margin-left: 40px;
+}
+
+.curiosity-reader-meta {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: rgba(232, 228, 208, 0.5);
+  margin-bottom: 16px;
+}
+
+.curiosity-reader-heading {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.2rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0 0 24px 0;
+  line-height: 1.2;
+}
+
+.curiosity-reader-text {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: rgba(232, 228, 208, 0.85);
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  margin-bottom: 24px;
+}
+
+/* ===== POLAROID VIEW ===== */
+
+.curiosity-polaroid-view {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.polaroid-frame {
+  aspect-ratio: 1 / 1;
+  background-color: #1a1f3a;
+  background-size: cover;
+  background-position: center;
+  border-radius: 4px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.polaroid-caption {
+  font-size: 0.9rem;
+  color: rgba(232, 228, 208, 0.7);
+  margin: 0;
+}
+
+.polaroid-back {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: rgba(232, 228, 208, 0.85);
+  margin: 20px 0;
+  padding: 20px;
+  border-left: 2px solid rgba(232, 228, 208, 0.2);
+}
+
+/* ===== TEXT VIEW ===== */
+
+.curiosity-text-view {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ===== QUESTION COMPOSER ===== */
+
+.curiosity-question-composer {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.curiosity-question-input {
+  width: 100%;
+  min-height: 160px;
+  padding: 16px;
+  border: 1px solid rgba(232, 228, 208, 0.2);
+  border-radius: 6px;
+  background: rgba(232, 228, 208, 0.05);
+  color: #e8e4d0;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  resize: vertical;
+  transition: all 0.3s ease;
+}
+
+.curiosity-question-input:focus {
+  outline: none;
+  border-color: rgba(232, 228, 208, 0.4);
+  background: rgba(232, 228, 208, 0.08);
+  box-shadow: 0 0 0 3px rgba(232, 228, 208, 0.1);
+}
+
+.curiosity-question-input::placeholder {
+  color: rgba(232, 228, 208, 0.4);
+}
+
+/* ===== READER ACTIONS ===== */
+
+.curiosity-reader-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.curiosity-reader-button {
+  flex: 1;
+  padding: 12px 24px;
+  border: 1px solid rgba(232, 228, 208, 0.3);
+  border-radius: 6px;
+  background: transparent;
+  color: #e8e4d0;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  letter-spacing: 0.2px;
+}
+
+.curiosity-reader-button:hover {
+  background: rgba(232, 228, 208, 0.1);
+  border-color: rgba(232, 228, 208, 0.6);
+}
+
+.curiosity-reader-button.primary {
+  background: rgba(232, 228, 208, 0.15);
+  border-color: rgba(232, 228, 208, 0.5);
+}
+
+.curiosity-reader-button.primary:hover {
+  background: rgba(232, 228, 208, 0.25);
+  border-color: rgba(232, 228, 208, 0.8);
+}
+
+/* ===== RESPONSIVE ===== */
+
+@media (max-width: 768px) {
+  .curiosity-main {
+    padding: 40px 20px;
+  }
+
+  .curiosity-header {
+    margin-bottom: 40px;
+  }
+
+  .curiosity-title {
+    font-size: clamp(2.5rem, 6vw, 3.5rem);
+  }
+
+  .curiosity-reader {
+    padding: 30px 20px;
+  }
+
+  .curiosity-reader-inner {
+    margin-left: 0;
+  }
+
+  .curiosity-reader-heading {
+    font-size: 1.8rem;
+  }
+
+  .curiosity-scraps-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .curiosity-actions {
+    flex-direction: column;
+  }
+
+  .curiosity-action-button {
+    width: 100%;
+  }
+}

@@ -1,0 +1,334 @@
+.curiosity-stage {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background: #050403;
+}
+
+/* ---------- chrome ---------- */
+.curiosity-back {
+  position: absolute;
+  top: 24px;
+  left: 28px;
+  z-index: 20;
+  color: #8a8378;
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-decoration: none;
+  font-family: var(--font-inter, sans-serif);
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+.curiosity-back.is-visible {
+  opacity: 1;
+}
+
+.curiosity-hint {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6b655c;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0;
+  transition: opacity 1.2s ease;
+  pointer-events: none;
+}
+.curiosity-hint.is-visible {
+  opacity: 1;
+}
+
+/* ---------- desk world (pannable) ---------- */
+.curiosity-world {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  cursor: grab;
+}
+.curiosity-world.is-dragging {
+  cursor: grabbing;
+}
+
+.curiosity-canvas {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.08) 0px,
+      rgba(0, 0, 0, 0.08) 2px,
+      transparent 2px,
+      transparent 60px
+    ),
+    linear-gradient(180deg, #2b1d14 0%, #1c120b 100%);
+}
+
+/* fixed vignette + lamp glow sit above the canvas but don't move with it,
+   so the lit "pool" always stays centered in the viewport as you pan */
+.curiosity-vignette {
+  position: absolute;
+  inset: 0;
+  z-index: 15;
+  pointer-events: none;
+  background: radial-gradient(
+    circle 420px at 50% 45%,
+    transparent 0%,
+    transparent 30%,
+    rgba(2, 1, 0, 0.55) 62%,
+    rgba(2, 1, 0, 0.97) 85%
+  );
+  opacity: 0;
+  transition: opacity 1.8s ease;
+}
+.curiosity-vignette.is-on {
+  opacity: 1;
+}
+
+.curiosity-lamp-glow {
+  position: absolute;
+  z-index: 1;
+  left: 50%;
+  top: 45%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    #ffdb8c 0%,
+    #d9a24b 35%,
+    transparent 70%
+  );
+  opacity: 0.85;
+  pointer-events: none;
+}
+
+/* ---------- scraps ---------- */
+.curiosity-scrap {
+  position: absolute;
+  user-select: none;
+  cursor: grab;
+  opacity: 0;
+  transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.2, 0.7, 0.3, 1),
+    box-shadow 0.25s ease;
+}
+.curiosity-scrap.is-in {
+  opacity: 1;
+}
+.curiosity-scrap:hover {
+  box-shadow: 0 14px 24px rgba(0, 0, 0, 0.45);
+}
+
+.curiosity-paper {
+  background: #ede6d3;
+  color: #2e2a22;
+  padding: 22px 24px;
+  width: 230px;
+  font-family: var(--font-courier, monospace);
+  font-size: 13px;
+  line-height: 1.55;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.4);
+}
+.curiosity-paper.is-torn {
+  clip-path: polygon(
+    0% 2%, 4% 0%, 10% 3%, 18% 0%, 27% 2%, 35% 0%, 44% 3%, 53% 0%,
+    62% 2%, 71% 0%, 80% 3%, 89% 0%, 96% 2%, 100% 0%, 100% 100%, 0% 100%
+  );
+}
+
+.curiosity-sticky {
+  background: #a8532e;
+  color: #2a140a;
+  padding: 18px;
+  width: 170px;
+  height: 170px;
+  font-family: var(--font-caveat, cursive);
+  font-size: 19px;
+  line-height: 1.3;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+}
+
+.curiosity-polaroid {
+  background: #f4f1ea;
+  padding: 12px 12px 42px;
+  width: 190px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+  position: relative;
+}
+.curiosity-polaroid .frame {
+  width: 100%;
+  height: 150px;
+  background: #20242a;
+  background-size: cover;
+  background-position: center;
+}
+.curiosity-polaroid .cap {
+  font-family: var(--font-caveat, cursive);
+  font-size: 16px;
+  color: #3a352c;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.curiosity-note {
+  background: #d8cdb0;
+  color: #2e2a22;
+  padding: 20px;
+  width: 200px;
+  min-height: 80px;
+  font-family: var(--font-caveat, cursive);
+  font-size: 20px;
+  line-height: 1.35;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.4);
+}
+
+.curiosity-stain {
+  position: absolute;
+  width: 38px;
+  height: 34px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(90, 60, 20, 0.16), transparent 70%);
+  pointer-events: none;
+}
+
+.curiosity-folded-corner {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 20px 20px 0;
+  border-color: transparent rgba(0, 0, 0, 0.15) transparent transparent;
+}
+
+/* flip */
+.curiosity-flip-outer {
+  perspective: 1000px;
+}
+.curiosity-flip-inner {
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.5s ease;
+}
+.curiosity-flip-inner.is-flipped {
+  transform: rotateY(180deg);
+}
+.curiosity-flip-front,
+.curiosity-flip-back {
+  backface-visibility: hidden;
+}
+.curiosity-flip-back {
+  position: absolute;
+  inset: 0;
+  transform: rotateY(180deg);
+}
+
+/* ---------- focus state ---------- */
+.curiosity-focus-dim {
+  position: absolute;
+  inset: 0;
+  z-index: 25;
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+  perspective: 1200px;
+}
+.curiosity-focus-dim.is-on {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.curiosity-focus-item {
+  position: absolute;
+  z-index: 26;
+  left: 50%;
+  top: 50%;
+  opacity: 0;
+  pointer-events: none;
+  transform-style: preserve-3d;
+  transition: transform 0.5s ease, opacity 0.4s ease;
+}
+.curiosity-focus-item.is-on {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* resting (pre-open) transform per kind — the shape the item opens *from* */
+.curiosity-focus-item[data-kind='polaroid'] {
+  transform: translate(-50%, -50%) scale(1) rotateY(-90deg);
+}
+.curiosity-focus-item[data-kind='draft'] {
+  transform: translate(-50%, -50%) scale(1) scaleY(0.35);
+  transform-origin: top center;
+}
+.curiosity-focus-item[data-kind='sticky'] {
+  transform: translate(-50%, -50%) scale(1) rotate(-10deg) skewX(8deg);
+  transform-origin: bottom left;
+}
+.curiosity-focus-item[data-kind='note'],
+.curiosity-focus-item[data-kind='observation'] {
+  transform: translate(-50%, -50%) scale(1) rotateX(-30deg);
+}
+
+/* opened transform per kind — flip settles flat, unfold extends down,
+   peel lays flat, flatten removes the curl */
+.curiosity-focus-item.is-on[data-kind='polaroid'] {
+  transform: translate(-50%, -50%) scale(1.4) rotateY(0deg);
+}
+.curiosity-focus-item.is-on[data-kind='draft'] {
+  transform: translate(-50%, -50%) scale(1.4) scaleY(1);
+}
+.curiosity-focus-item.is-on[data-kind='sticky'] {
+  transform: translate(-50%, -50%) scale(1.4) rotate(0deg) skewX(0deg);
+}
+.curiosity-focus-item.is-on[data-kind='note'],
+.curiosity-focus-item.is-on[data-kind='observation'] {
+  transform: translate(-50%, -50%) scale(1.4) rotateX(0deg);
+}
+
+.curiosity-paper.is-focused-scroll,
+.curiosity-note.is-focused-scroll {
+  max-height: 60vh;
+  overflow-y: auto;
+}
+
+/* ---------- anonymous question card ---------- */
+.curiosity-question-card {
+  background: #ede6d3;
+  color: #2e2a22;
+  width: 260px;
+  padding: 24px;
+  font-family: var(--font-courier, monospace);
+  font-size: 13px;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.45);
+}
+.curiosity-question-card textarea {
+  width: 100%;
+  margin-top: 14px;
+  background: transparent;
+  border: none;
+  border-top: 1px solid rgba(0, 0, 0, 0.2);
+  padding-top: 10px;
+  font-family: var(--font-caveat, cursive);
+  font-size: 17px;
+  color: #2e2a22;
+  resize: none;
+  outline: none;
+}
+.curiosity-question-card button {
+  margin-top: 10px;
+  background: none;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  color: #2e2a22;
+  font-family: var(--font-inter, sans-serif);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  padding: 6px 12px;
+  cursor: pointer;
+  text-transform: uppercase;
+}
