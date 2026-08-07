@@ -1,25 +1,11 @@
-export type ScrapKind =
-  | 'question'
-  | 'observation'
-  | 'draft'
-  | 'sticky'
-  | 'polaroid'
-  | 'note';
+
+// Real content should replace this. Keep a few deliberately throwaway
+// scraps (like the notebook one below) mixed in with meaningful ones —
+// that contrast is what makes the desk feel real rather than curated.
+export type ScrapKind = 'question' | 'observation' | 'draft' | 'sticky' | 'polaroid' | 'note';
 
 export interface Scrap {
-  id: string;
-  kind: ScrapKind;
-  x: number;
-  y: number;
-  rotation: number;
-  title?: string;
-  body?: string;
-  fullText?: string;
-  imageUrl?: string;
-  caption?: string;
-  hasStain?: boolean;
-  hasFoldedCorner?: boolean;
-  backText?: string;
+  id: string; kind: ScrapKind; x: number; y: number; rotation: number; title?: string; body?: string; fullText?: string; imageUrl?: string; caption?: string; hasStain?: boolean; hasFoldedCorner?: boolean; backText?: string;
 }
 
 export const scraps: Scrap[] = [
@@ -45,9 +31,9 @@ export const scraps: Scrap[] = [
     x: 520,
     y: -90,
     rotation: -8,
-    imageUrl: '/curiosity/polaroids/andromeda.jpg',
-    caption: 'Andromeda, 3am',
-    backText: 'Couldn\'t sleep. Went out to the balcony instead.',
+    imageUrl: 'https://images.unsplash.com/photo-1658499416170-02fd4d7d439e?auto=format&fit=crop&w=1200&q=85',
+    caption: '3:07 AM',
+    backText: 'I think I photograph the moon whenever I need proof that I was awake for something beautiful.',
   },
   {
     id: 'ocean-poem',
@@ -80,8 +66,9 @@ export const scraps: Scrap[] = [
     x: 660,
     y: 220,
     rotation: 5,
-    imageUrl: '/curiosity/polaroids/nebula.jpg',
-    caption: 'unnamed nebula',
+    imageUrl: 'https://images.unsplash.com/photo-1733952721593-173367ef4558?auto=format&fit=crop&w=1200&q=85',
+    caption: 'somewhere after midnight',
+    backText: 'I don’t remember where this was. I remember wanting the night to last longer.',
     hasFoldedCorner: true,
   },
   {
@@ -106,96 +93,9 @@ export const scraps: Scrap[] = [
     x: 1180,
     y: 140,
     rotation: -3,
-    body:
-      'morbid is the pen that refused to bleed,\n' +
-      'withered were the words that begged to be freed...',
+    body: 'morbid is the pen that refused to bleed,\nwithered were the words that begged to be freed...',
     fullText:
-      'morbid is the pen that refused to bleed,\n' +
-      'withered were the words that begged to be freed,\n' +
-      'they ran through the queer idleness of the streets,\n' +
-      'and lay static on the amber printed sheets\n' +
-      'it had been 19 tedious centuries of writing,\n' +
-      'my hand had held the shield from resigning,\n' +
-      'but as the leaves turned grey and the sky turned pale,\n' +
-      'my fingertips slowly quivered to medusa\'s tale,\n' +
-      'the book met its culmination 2 months back,\n' +
-      'and so as the ink slowly cried,\n' +
-      'the soul that it entailed, slowly dried,\n' +
-      'three years ago, i had to keep the book safe,\n' +
-      'away from the wounds of the wolves,\n' +
-      'hostility became the language that it had never seen\n' +
-      'it sealed itself in a jar of light,\n' +
-      'when my throat ached for foolish confessions,\n' +
-      'i would unseal the jar, and write another tale,\n' +
-      'soon, it became a tragedy out of habit,\n' +
-      'Tell me, when is a book ever born of need?\n' +
-      'Is it for the hand that writes,\n' +
-      'Or for the eyes that only wander past?\n' +
-      'The question splits into two winding roads\n' +
-      'How do I know which one to follow?\n' +
-      'a piece of art, requires emotion,\n' +
-      'but it is meant to be percieved, tis true,\n' +
-      'what if my emotions depend on that perception?\n' +
-      'what if my heart beats only when seen?\n' +
-      'Have I betrayed the art?\n' +
-      'Or has it betrayed me?\n' +
-      'is that a betrayal to art?\n' +
-      'or is it a betrayal to me?\n\n' +
-      'so a new body ascends into my chambers,\n' +
-      'they plead with their fists,\n' +
-      'they stand upright and with a heart open,\n' +
-      'i read the book aloud,\n' +
-      'the fables of the gods,\n' +
-      'the archers to my soul,\n' +
-      'now they would know all,\n' +
-      'hoping that after they heard the book,\n' +
-      'some sympathy would be sprinkled,\n' +
-      'some crystals would be forgotten,\n' +
-      'and maybe the love for me\n' +
-      'would woefully bleed,\n' +
-      'its such as a jar of light,\n' +
-      'bundling between the crests of the shore,\n' +
-      'the hope that in entails,\n' +
-      'blinds the people that i show it to,\n' +
-      'the book is safe within the jar,\n' +
-      'but now the book holds a void,\n' +
-      'its scathed with heat, but it wishes to\n' +
-      'sleep in the cold, passed within the tides,\n' +
-      'its recagnizes that the time for it might have passed\n' +
-      'the words recited under fury, should have been under guard\n' +
-      'the book knows that it altered my soul,\n' +
-      'so deep were these cuts,\n' +
-      'so shameful were these words,\n' +
-      'but now, having read the book aloud,\n' +
-      'to body one, body two, body so,\n' +
-      'my mind holds the key to it,\n' +
-      'it knows every letter, every space,\n' +
-      'every syllable held a word,\n' +
-      'so now, i sing it as a song,\n' +
-      'because somewhere in the deep end\n' +
-      'of my head, a comet strikes,\n' +
-      'it holds the notion,\n' +
-      'maybe it won\'t be for who heard the book,\n' +
-      'it might just be aboiut the one who lived it,\n' +
-      'the comet might herald destruction,\n' +
-      'but it did herald a new beginning to\n' +
-      'a new end, the story is composed in me,\n' +
-      'it became me so it no longer afects me,\n' +
-      'thus, the pen wither in a way different,\n' +
-      'a way that is unknown to me,\n' +
-      'a book that i know write,\n' +
-      'knowing the life i see,\n' +
-      'is theone distinct from the jar,\n' +
-      'here, my ink hadn\'t bled for such a woefully long time,\n' +
-      'but now i see clearly,\n' +
-      'thus i wish to write a book that is inherent to me,\n' +
-      'this is the beginning of a story that no longer\n' +
-      'houses stories that make my fingers bleed,\n' +
-      'it might be something anew,\n' +
-      'i wish my heart knew,\n' +
-      'but all it feels, is what will be seen,\n' +
-      'and maybe this book, might be a beginning\n' +
-      'that took me too long to see.',
+      'morbid is the pen that refused to bleed,\nwithered were the words that begged to be freed,\nthey ran through the queer idleness of the streets,\nand lay static on the amber printed sheets\nit had been 19 tedious centuries of writing,\nmy hand had held the shield from resigning,\nbut as the leaves turned grey and the sky turned pale,\nmy fingertips slowly quivered to medusa\u2019s tale,\nthe book met its culmination 2 months back,\nand so as the ink slowly cried,\nthe soul that it entailed, slowly dried,\nthree years ago, i had to keep the book safe,\naway from the wounds of the wolves,\nhostility became the language that it had never seen\nit sealed itself in a jar of light,\nwhen my throat ached for foolish confessions,\ni would unseal the jar, and write another tale,\nsoon, it became a tragedy out of habit,\nTell me, when is a book ever born of need?\nIs it for the hand that writes,\nOr for the eyes that only wander past?\nThe question splits into two winding roads\nHow do I know which one to follow?\na piece of art, requires emotion,\nbut it is meant to be percieved, tis true,\nwhat if my emotions depend on that perception?\nwhat if my heart beats only when seen?\nHave I betrayed the art?\nOr has it betrayed me?\nis that a betrayal to art?\nor is it a betrayal to me?\n\nso a new body ascends into my chambers,\nthey plead with their fists,\nthey stand upright and with a heart open,\ni read the book aloud,\nthe fables of the gods,\nthe archers to my soul,\nnow they would know all,\nhoping that after they heard the book,\nsome sympathy would be sprinkled,\nsome crystals would be forgotten,\nand maybe the love for me\nwould woefully bleed,\nits such as a jar of light,\nbundling between the crests of the shore,\nthe hope that in entails,\nblinds the people that i show it to,\nthe book is safe within the jar,\nbut now the book holds a void,\nits scathed with heat, but it wishes to\nsleep in the cold, passed within the tides,\nits recagnizes that the time for it might have passed\nthe words recited under fury, should have been under guard\nthe book knows that it altered my soul,\nso deep were these cuts,\nso shameful were these words,\nbut now, having read the book aloud,\nto body one, body two, body so,\nmy mind holds the key to it,\nit knows every letter, every space,\nevery syllable held a word,\nso now, i sing it as a song,\nbecause somewhere in the deep end\nof my head, a comet strikes,\nit holds the notion,\nmaybe it won\u2019t be for who heard the book,\nit might just be aboiut the one who lived it,\nthe comet might herald destruction,\nbut it did herald a new beginning to\na new end, the story is composed in me,\nit became me so it no longer afects me,\nthus, the pen wither in a way different,\na way that is unknown to me,\na book that i know write,\nknowing the life i see,\nis theone distinct from the jar,\nhere, my ink hadn\u2019t bled for such a woefully long time,\nbut now i see clearly,\nthus i wish to write a book that is inherent to me,\nthis is the beginning of a story that no longer\nhouses stories that make my fingers bleed,\nit might be something anew,\ni wish my heart knew,\nbut all it feels, is what will be seen,\nand maybe this book, might be a beginning\nthat took me too long to see.',
   },
   {
     id: 'telephone',
@@ -220,18 +120,10 @@ export const scraps: Scrap[] = [
     x: -560,
     y: 480,
     rotation: 2,
-    body:
-      'Earth and the Sun: could be a metaphor.\n' +
-      'The Sun will collide into Earth eventually —\n' +
-      'we know that. Still, it can\'t help it.',
+    body: 'Earth and the Sun: could be a metaphor.\nThe Sun will collide into Earth eventually \u2014\nwe know that. Still, it can\u2019t help it.',
   },
   {
-    id: 'leave-a-question',
-    kind: 'question',
-    x: 980,
-    y: 460,
-    rotation: -2,
-    title: 'Leave a question',
-    body: 'What question has stayed with you?',
+    id: 'leave-a-question', kind: 'question', x: 980, y: 460, rotation: -2,
+    title: 'An empty page / yours', body: 'Leave something unfinished.'
   },
 ];
