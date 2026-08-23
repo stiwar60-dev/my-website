@@ -451,3 +451,247 @@ a {
   .nexus-name, .intro-line, .main-orb-wrapper, .glass-orb, .reflection-quote-wrap, .divided-orbs-wrap, .sub-orb-container, .scroll-hint, .curiosity-strip-container, .curiosity-card img, .curiosity-card, .work-card, .contact-btn, .nav-item, .seamless-orb-container { animation: none !important; transition: none !important; }
   .nexus-name, .intro-line, .reflection-quote-wrap, .divided-orbs-wrap, .curiosity-strip-container { opacity: 1 !important; visibility: visible !important; transform: none !important; }
 }
+/* ============================================================
+   MAIN ORB — INTERACTION INVITATION
+   ============================================================ */
+
+.main-orb-wrapper.idle {
+  cursor: pointer;
+}
+
+
+/* Tiny invitation text — invisible until hover */
+
+.orb-enter-label {
+  position: absolute;
+
+  left: 50%;
+  top: calc(100% + 22px);
+
+  transform:
+    translateX(-50%)
+    translateY(5px);
+
+  white-space: nowrap;
+
+  font-family: Inter, sans-serif;
+  font-size: 0.56rem;
+  font-weight: 400;
+
+  letter-spacing: 0.28em;
+
+  color: rgba(178, 226, 255, 0);
+
+  opacity: 0;
+
+  pointer-events: none;
+
+  transition:
+    opacity 0.45s ease,
+    transform 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+    color 0.45s ease;
+
+  text-shadow:
+    0 0 16px rgba(138, 215, 255, 0.35);
+}
+
+
+/* Hover: orb becomes unmistakably interactive */
+
+.main-orb-wrapper.idle:hover {
+  transform:
+    translate(-50%, -50%)
+    scale(1.12);
+}
+
+
+.main-orb-wrapper.idle:hover .glass-orb {
+  border-color:
+    rgba(255, 255, 255, 0.92);
+
+  background:
+    radial-gradient(
+      circle at 35% 30%,
+      rgba(255, 255, 255, 0.82) 0%,
+      rgba(138, 215, 255, 0.46) 42%,
+      rgba(50, 112, 150, 0.24) 68%,
+      rgba(7, 11, 20, 0.76) 100%
+    );
+
+  box-shadow:
+    inset 0 0 18px rgba(255, 255, 255, 0.65),
+    0 0 28px rgba(138, 215, 255, 0.72),
+    0 0 70px rgba(138, 215, 255, 0.38),
+    0 0 120px rgba(138, 215, 255, 0.14);
+}
+
+
+.main-orb-wrapper.idle:hover .orb-core-light {
+  background: #ffffff;
+
+  box-shadow:
+    0 0 10px #ffffff,
+    0 0 22px rgba(178, 229, 255, 0.95),
+    0 0 45px rgba(138, 215, 255, 0.55);
+}
+
+
+.main-orb-wrapper.idle:hover .orb-enter-label {
+  opacity: 1;
+
+  color:
+    rgba(195, 233, 255, 0.78);
+
+  transform:
+    translateX(-50%)
+    translateY(0);
+}
+
+
+/* ------------------------------------------------------------
+   RESTING HEARTBEAT
+   A ring occasionally escapes the orb.
+   ------------------------------------------------------------ */
+
+.orb-invitation-ring {
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  width: 52px;
+  height: 52px;
+
+  transform:
+    translate(-50%, -50%)
+    scale(1);
+
+  border:
+    1px solid rgba(138, 215, 255, 0.42);
+
+  border-radius: 50%;
+
+  opacity: 0;
+
+  pointer-events: none;
+}
+
+
+.main-orb-wrapper.idle
+.orb-invitation-ring.ring-one {
+  animation:
+    nexusInvitationPulse
+    3.4s ease-out infinite;
+}
+
+
+.main-orb-wrapper.idle
+.orb-invitation-ring.ring-two {
+  animation:
+    nexusInvitationPulse
+    3.4s ease-out 0.22s infinite;
+}
+
+
+@keyframes nexusInvitationPulse {
+  0%,
+  55% {
+    opacity: 0;
+
+    transform:
+      translate(-50%, -50%)
+      scale(1);
+  }
+
+  62% {
+    opacity: 0.38;
+  }
+
+  82% {
+    opacity: 0;
+
+    transform:
+      translate(-50%, -50%)
+      scale(1.85);
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+
+/* Hover produces a quicker acknowledgement */
+
+.main-orb-wrapper.idle:hover
+.orb-invitation-ring.ring-one {
+  animation:
+    nexusHoverRipple
+    1.25s ease-out infinite;
+}
+
+
+.main-orb-wrapper.idle:hover
+.orb-invitation-ring.ring-two {
+  animation:
+    nexusHoverRipple
+    1.25s ease-out 0.2s infinite;
+}
+
+
+@keyframes nexusHoverRipple {
+  0% {
+    opacity: 0.5;
+
+    transform:
+      translate(-50%, -50%)
+      scale(0.95);
+  }
+
+  100% {
+    opacity: 0;
+
+    transform:
+      translate(-50%, -50%)
+      scale(2);
+  }
+}
+
+
+/* Keyboard users get the same invitation */
+
+.main-orb-wrapper.idle:focus-visible {
+  outline: none;
+
+  transform:
+    translate(-50%, -50%)
+    scale(1.12);
+}
+
+
+.main-orb-wrapper.idle:focus-visible
+.orb-enter-label {
+  opacity: 1;
+
+  color:
+    rgba(195, 233, 255, 0.78);
+
+  transform:
+    translateX(-50%)
+    translateY(0);
+}
+
+
+/* Respect reduced-motion preferences */
+
+@media (prefers-reduced-motion: reduce) {
+  .orb-invitation-ring {
+    animation: none !important;
+  }
+
+  .main-orb-wrapper.idle:hover {
+    transform:
+      translate(-50%, -50%)
+      scale(1.06);
+  }
+}

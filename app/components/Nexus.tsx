@@ -69,19 +69,30 @@ export default function Nexus({ stage, onOrbClick }: NexusProps) {
       </svg>
 
       {/* MAIN ORB — Fades out as division begins */}
-      <div
-        className={`main-orb-wrapper ${stage}`}
-        onClick={onOrbClick}
-        onKeyDown={handleOrbKeyDown}
-        role="button"
-        tabIndex={stage === "idle" ? 0 : -1}
-        aria-label="Open the Nexus"
-      >
-        <div className={`glass-orb ${stage}`}>
-          <div className="orb-highlight" />
-          <div className="orb-core-light" />
-        </div>
-      </div>
+      {/* MAIN ORB — interactive invitation into the Nexus */}
+<div
+  className={`main-orb-wrapper ${stage}`}
+  onClick={onOrbClick}
+  onKeyDown={handleOrbKeyDown}
+  role="button"
+  tabIndex={stage === "idle" ? 0 : -1}
+  aria-label="Enter the Nexus"
+>
+  <div className={`glass-orb ${stage}`}>
+    {/* Invitation ripples */}
+    <div className="orb-invitation-ring ring-one" />
+    <div className="orb-invitation-ring ring-two" />
+
+    {/* Existing orb details */}
+    <div className="orb-highlight" />
+    <div className="orb-core-light" />
+  </div>
+
+  {/* Appears only when the visitor hovers/focuses */}
+  <div className="orb-enter-label">
+    ENTER THE NEXUS
+  </div>
+</div>
 
       {/* SEAMLESS GOOEY DIVISION & DRIFT CONTAINER */}
       <div className={`gooey-division-wrap ${isDividing ? "active" : ""} ${stage}`}>
