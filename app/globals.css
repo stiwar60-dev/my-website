@@ -466,7 +466,7 @@ a {
   position: absolute;
 
   left: 50%;
-  top: calc(100% + 22px);
+  top: calc(100% + 12px);
 
   transform:
     translateX(-50%)
