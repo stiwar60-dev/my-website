@@ -1,6 +1,7 @@
 'use client';
 
 import {
+  useEffect,
   useRef,
   useState,
   type CSSProperties,
@@ -50,6 +51,78 @@ const POSITIONS: Position[] = [
   { x: 92, y: 58, depth: 'far' },
   { x: 74, y: 42, depth: 'middle' },
 ];
+const MOBILE_POSITIONS: Position[] = [
+  // 00 — featured Draft 10
+  // Bring this into view much sooner.
+  { x: 60, y: 22, depth: 'middle' },
+
+  // 01
+  { x: 80, y: 29, depth: 'far' },
+
+  // 02
+  { x: 76, y: 38, depth: 'near' },
+
+  // 03
+  { x: 48, y: 34, depth: 'near' },
+
+  // 04
+  { x: 25, y: 44, depth: 'middle' },
+
+  // 05
+  { x: 75, y: 51, depth: 'far' },
+
+  // 06
+  { x: 24, y: 59, depth: 'middle' },
+
+  // 07
+  { x: 57, y: 65, depth: 'far' },
+
+  // 08
+  { x: 79, y: 72, depth: 'middle' },
+
+  // 09
+  { x: 31, y: 77, depth: 'near' },
+
+  // 10
+  { x: 68, y: 84, depth: 'far' },
+
+  // 11
+  { x: 47, y: 54, depth: 'middle' },
+
+  // 12
+  { x: 80, y: 62, depth: 'near' },
+
+  // 13
+  { x: 23, y: 69, depth: 'far' },
+
+  // 14
+  { x: 79, y: 35, depth: 'middle' },
+
+  // 15
+  { x: 65, y: 48, depth: 'near' },
+
+  // 16
+  { x: 36, y: 61, depth: 'middle' },
+
+  // 17
+  { x: 55, y: 74, depth: 'near' },
+
+  // 18
+  { x: 82, y: 80, depth: 'far' },
+
+  // 19
+  { x: 24, y: 52, depth: 'middle' },
+];
+
+const MOBILE_VISITOR_POSITIONS: Position[] = [
+  { x: 78, y: 58, depth: 'near' },
+  { x: 28, y: 67, depth: 'middle' },
+  { x: 72, y: 76, depth: 'near' },
+  { x: 38, y: 84, depth: 'middle' },
+  { x: 80, y: 91, depth: 'far' },
+  { x: 23, y: 94, depth: 'middle' },
+];
+
 const VISITOR_POSITIONS: Position[] = [
   { x: 76, y: 58, depth: 'near' },
   { x: 63, y: 76, depth: 'middle' },
@@ -141,6 +214,17 @@ export default function ThoughtField({
 
   const [hovered, setHovered] =
     useState<string | null>(null);
+
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const media = window.matchMedia('(max-width: 680px)');
+    const sync = () => setIsMobile(media.matches);
+
+    sync();
+    media.addEventListener('change', sync);
+    return () => media.removeEventListener('change', sync);
+  }, []);
 
   const handlePointerMove = (
     event: ReactPointerEvent<HTMLDivElement>
@@ -281,12 +365,20 @@ const visitorIndex = visitor
       .length
   : -1;
 
+const positionPool = isMobile
+  ? MOBILE_POSITIONS
+  : POSITIONS;
+
+const visitorPositionPool = isMobile
+  ? MOBILE_VISITOR_POSITIONS
+  : VISITOR_POSITIONS;
+
 const position = visitor
-  ? VISITOR_POSITIONS[
-      visitorIndex % VISITOR_POSITIONS.length
+  ? visitorPositionPool[
+      visitorIndex % visitorPositionPool.length
     ]
-  : POSITIONS[
-      index % POSITIONS.length
+  : positionPool[
+      index % positionPool.length
     ];
 
         const isPolaroid =

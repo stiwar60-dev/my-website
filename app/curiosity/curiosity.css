@@ -16,3 +16,214 @@
 .fragment-reader-shell{position:fixed;inset:0;z-index:200;display:grid;place-items:center;padding:32px}.fragment-reader-backdrop{position:absolute;inset:0;border:0;background:#010308d1;backdrop-filter:blur(9px)}.reader-x{position:absolute;right:18px;top:18px;z-index:20;width:38px;height:38px;border:1px solid #ffffff1c;border-radius:50%;background:#ffffff08;color:#fffb;font-size:1.3rem;cursor:pointer}.document-reader,.memory-reader,.empty-page-reader{position:relative;z-index:5;box-shadow:0 40px 120px #000b}.document-reader{width:min(760px,calc(100vw - 48px));max-height:calc(100svh - 64px);overflow:auto;padding:clamp(40px,6vw,74px);background:linear-gradient(145deg,#0d131ffd,#050911fe);border:1px solid #8bd7ff21;animation:doc .72s cubic-bezier(.16,1,.3,1)}@keyframes doc{from{opacity:0;transform:scaleX(.04) scaleY(.82)}to{opacity:1;transform:none}}.document-spine{position:absolute;left:0;top:0;bottom:0;width:2px;background:linear-gradient(transparent,#8bd7ffb8,transparent)}.document-status{display:block;margin-bottom:24px;font:.56rem "Courier Prime",monospace;letter-spacing:.22em;color:#8bd7ff99}.document-reader h2,.memory-copy h2,.empty-page-reader h2{margin:0;font:400 clamp(2.4rem,5vw,4.8rem)/.95 "Cormorant Garamond",serif}.document-rule{width:62px;height:1px;margin:30px 0;background:#8bd7ff66}.document-copy{white-space:pre-wrap;font:clamp(1.08rem,1.7vw,1.34rem)/1.72 "Cormorant Garamond",serif;color:#f5f2eac9}.document-reader footer{display:flex;justify-content:space-between;margin-top:52px;padding-top:18px;border-top:1px solid #fff1;font:.5rem "Courier Prime",monospace;letter-spacing:.18em;color:#fff4}.memory-reader{width:min(820px,calc(100vw - 48px));display:grid;grid-template-columns:minmax(260px,360px) 1fr;align-items:center;gap:50px;padding:clamp(34px,5vw,60px);background:#05080ffb;border:1px solid #8bd7ff1a}.memory-polaroid{width:100%;aspect-ratio:.82;padding:0;border:0;background:transparent;perspective:1300px;cursor:pointer}.memory-polaroid-inner{position:relative;display:block;width:100%;height:100%;transform-style:preserve-3d;transition:.8s cubic-bezier(.16,1,.3,1)}.memory-polaroid.is-flipped .memory-polaroid-inner{transform:rotateY(180deg)}.memory-front,.memory-back{position:absolute;inset:0;display:flex;flex-direction:column;backface-visibility:hidden;background:#eee9dd;color:#181716;padding:16px;box-shadow:0 28px 65px #0009}.memory-image{flex:1;background:#111720 center/cover no-repeat}.memory-caption{padding:16px 4px 3px;font:1.3rem Caveat,cursive}.memory-back{display:grid;place-items:center;transform:rotateY(180deg);padding:38px;font:clamp(1.3rem,2.5vw,1.8rem)/1.25 Caveat,cursive;text-align:center}.memory-copy span{display:block;margin-bottom:17px;font:.54rem "Courier Prime",monospace;letter-spacing:.2em;color:#8bd7ff8f}.memory-copy p{color:#fff6;font-size:.78rem}.empty-page-reader{width:min(720px,calc(100vw - 48px));min-height:min(650px,calc(100svh - 64px));display:flex;flex-direction:column;padding:clamp(42px,7vw,82px);overflow:hidden;color:#202020;background:radial-gradient(circle at 25% 15%,#ffffffc7,transparent 36%),linear-gradient(120deg,#dcd6c9,#f1ede3 28%,#e5ded0)}.empty-page-reader .reader-x{color:#14141485;border-color:#1414141f}.empty-page-index{margin-bottom:38px;font:.55rem "Courier Prime",monospace;letter-spacing:.22em;color:#1414146b}.empty-page-preface{font:.72rem "Courier Prime",monospace;color:#14141485}.empty-page-reader h2{font-size:clamp(3rem,6vw,5.8rem);letter-spacing:-.045em}.empty-page-reader h2 em{color:#2a4d5fd1}.contribution-types{display:flex;gap:8px;flex-wrap:wrap;margin-top:34px}.contribution-types button{padding:8px 12px;border:1px solid #28231d24;background:transparent;color:#26211b7a;font:.48rem "Courier Prime",monospace;letter-spacing:.15em;cursor:pointer}.contribution-types button.is-selected{background:#324c5817;border-color:#324c5861;color:#274655e6}.contribution-prompt{margin-top:26px;font:italic clamp(1.25rem,2vw,1.7rem) "Cormorant Garamond",serif;color:#2a27229e}.empty-page-reader textarea{flex:1;width:100%;min-height:150px;margin-top:28px;padding:0 0 20px;border:0;border-bottom:1px solid #19191933;outline:0;resize:none;background:transparent;color:#242424;font:clamp(1.7rem,3vw,2.4rem)/1.25 Caveat,cursive}.empty-page-footer{display:flex;justify-content:space-between;align-items:center;margin-top:20px;font:.53rem "Courier Prime",monospace;letter-spacing:.15em;color:#14141466}.empty-page-footer button{border:0;background:transparent;color:#1e4457c2;font:inherit;letter-spacing:inherit;cursor:pointer}.empty-page-reader.is-folding{pointer-events:none;animation:fold .95s cubic-bezier(.65,0,.35,1) forwards}@keyframes fold{45%{transform:scaleX(.52)}72%{transform:scale(.5) rotate(2deg)}100%{opacity:0;transform:scale(.025) rotate(12deg);filter:brightness(1.8)}}.page-fold{position:absolute;pointer-events:none;opacity:0}
 /* MOBILE */
 @media(max-width:900px){.curiosity-status{display:none}.curiosity-topbar{grid-template-columns:1fr auto}.field-heading{width:55vw}.memory-reader{grid-template-columns:1fr;max-height:calc(100svh - 40px);overflow:auto}.memory-polaroid{width:min(300px,100%);margin:auto}}@media(max-width:680px){.curiosity-page{min-height:620px}.curiosity-topbar{height:62px;padding:0 18px}.thought-field{inset:62px 0 0}.field-heading{left:22px;top:28px;width:calc(100vw - 44px)}.field-heading h1{font-size:clamp(3rem,14vw,4.8rem)}.field-marginalia,.archive-counter{display:none}.loose-thought{right:8%;top:47%;width:145px}.fragment-feature{width:185px}.fragment-polaroid{width:95px}.fragment-telephone{width:165px}.telephone-copy{font-size:1.05rem}.fragment-earth-sun{width:150px}.fragment-reader-shell{padding:12px}.document-reader,.memory-reader,.empty-page-reader{width:100%;max-height:calc(100svh - 24px)}.opening-book{width:90vw;height:62vw}.book-page{padding:22px}.book-fragment{font-size:.48rem}}@media(prefers-reduced-motion:reduce){.book-entrance{display:none}.curiosity-topbar,.thought-field,.field-fragment,.document-reader,.memory-reader,.empty-page-reader{animation:none!important;transition:none!important;opacity:1;transform:none;filter:none}}
+
+
+/* ============================================================
+   CURIOSITY — PORTRAIT CONSTELLATION
+   Desktop above remains unchanged.
+   ============================================================ */
+@media (max-width:680px){
+  .curiosity-page{height:auto;min-height:100svh;overflow-x:hidden;overflow-y:auto;background:radial-gradient(circle at 52% 30%,#0b1324 0,#060b16 32%,#03060d 65%,#010207 100%)}
+  .curiosity-topbar{position:fixed;height:62px;padding:0 18px;grid-template-columns:1fr auto;background:rgba(2,5,11,.88);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+  .curiosity-logo{font-size:1.05rem}.curiosity-section-id{font-size:.48rem;gap:7px;letter-spacing:.14em}
+  .thought-field{position:relative;inset:auto;width:100%;height:1480px;min-height:1480px;margin-top:62px;overflow:hidden;transform:none!important}
+  .archive-is-open .thought-field{transform:none!important}
+  .thought-field:before{background:radial-gradient(330px circle at 78% 35%,rgba(220,163,96,.1),transparent 72%),radial-gradient(380px circle at 20% 72%,rgba(184,111,61,.07),transparent 72%)}
+  .attention-light{display:none}
+  .field-heading{left:22px;top:34px;width:calc(100% - 44px);z-index:14}
+  .field-code{margin-bottom:14px;font-size:.48rem;letter-spacing:.2em}
+  .field-heading h1{font-size:clamp(3rem,14vw,4.15rem);line-height:.82;letter-spacing:-.055em}
+  .field-heading p{width:100%;max-width:340px;margin-top:22px;font-size:.72rem;line-height:1.75}
+  .ghost-writing{font-size:clamp(4rem,22vw,7rem);opacity:.8}.ghost-one{right:-48%;top:14%}.ghost-two{left:-8%;bottom:13%}.ghost-three{right:-20%;bottom:32%;font-size:4rem}
+  .field-marginalia{display:block;font-size:.9rem;color:rgba(211,173,124,.2)}
+  .marginalia-one{left:58%;top:22%}.marginalia-two{right:4%;top:45%}.marginalia-three{left:8%;bottom:20%}.marginalia-four,.marginalia-five,.marginalia-six{display:none}
+  .thought-connections{opacity:.45}
+  .field-fragment{max-width:calc(100vw - 38px)}
+  .depth-far{opacity:.38}.depth-middle{opacity:.7}
+  .fragment-feature{width:min(205px,52vw)}
+  .feature-fragment{padding:16px;gap:6px 10px}.feature-number{font-size:2rem}.feature-copy{font-size:1rem;line-height:1.16}.feature-kind,.feature-open{font-size:.42rem}
+  .fragment-telephone{width:min(170px,43vw)}.telephone-scrap{padding:20px 16px 18px}.telephone-copy{font-size:1.03rem;line-height:1.02}
+  .fragment-polaroid{width:min(100px,25vw)}.field-polaroid{padding:6px 6px 10px}.field-polaroid-caption{font-size:.72rem;padding-top:6px}
+  .fragment-earth-sun{width:min(155px,39vw)}.orbit-note{padding:14px 14px}.orbit-question{font-size:.88rem}
+  .fragment-node{width:23px;height:23px}.fragment-node span{width:5px;height:5px}
+  .field-fragment:hover .fragment-node{width:23px;height:23px;box-shadow:none}
+  .fragment-label{left:50%;top:32px;width:min(180px,45vw);transform:translate(-50%,6px);text-align:center;opacity:0;z-index:30;padding:8px;background:rgba(3,7,14,.88);border:1px solid rgba(139,215,255,.08);border-radius:6px}
+  .field-fragment:focus-visible .fragment-label{opacity:1;transform:translate(-50%,0)}
+  .fragment-question .fragment-label{opacity:.72;left:auto;right:28px;top:50%;transform:translate(0,-50%);text-align:left;background:transparent;border:0;padding:0}
+  .visitor-copy{left:auto;right:36px;top:50%;width:min(170px,44vw);transform:translate(-5px,-50%);text-align:right}
+  .fragment-visitor:focus-visible .visitor-copy{opacity:1;transform:translate(0,-50%)}
+  .loose-thought{right:7%;top:59%;width:142px;padding:15px 15px 18px}
+  .archive-counter{display:flex;left:18px;right:18px;bottom:22px;justify-content:space-between;gap:8px;font-size:.4rem;letter-spacing:.1em}
+  .field-footer{display:none}
+  .fragment-reader-shell{padding:12px}.document-reader,.memory-reader,.empty-page-reader{width:100%;max-height:calc(100svh - 24px)}
+  .document-reader{padding:38px 24px}.document-reader h2{font-size:2.5rem}.document-copy{font-size:1.08rem}
+  .memory-reader{grid-template-columns:1fr;gap:24px;padding:26px 20px}.memory-polaroid{width:min(270px,78vw);margin:auto}
+  .empty-page-reader{padding:42px 24px;min-height:calc(100svh - 24px)}
+  .opening-book{width:90vw;height:62vw}.book-page{padding:22px}.book-fragment{font-size:.48rem}
+}
+
+/* ============================================================
+   MOBILE CURATION PASS — EARLY PHYSICAL SCRAPS + CONTRIBUTION TAB
+   Desktop is intentionally untouched.
+   ============================================================ */
+@media (max-width:680px){
+  /* Pull the two signature paper objects into the opening scene. */
+  .field-fragment.fragment-feature{
+    left:58% !important;
+    top:31% !important;
+    z-index:18;
+  }
+
+  .field-fragment.fragment-telephone{
+    left:28% !important;
+    top:40% !important;
+    z-index:19;
+  }
+
+  /* Keep the papers readable without letting them collide. */
+  .fragment-feature{width:min(190px,48vw)}
+  .fragment-telephone{width:min(158px,40vw)}
+
+  /* A little more room after the introduction before the archive drifts on. */
+  .field-heading p{max-width:330px}
+
+  /* Persistent archive bookmark: visible, but not loud. */
+  .contribution-edge-tab{
+    position:fixed;
+    right:0;
+    top:44%;
+    z-index:160;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    width:34px;
+    min-height:142px;
+    padding:12px 7px;
+    border:1px solid rgba(222,184,120,.28);
+    border-right:0;
+    border-radius:9px 0 0 9px;
+    background:rgba(7,10,15,.82);
+    -webkit-backdrop-filter:blur(12px);
+    backdrop-filter:blur(12px);
+    color:rgba(235,199,137,.78);
+    box-shadow:-10px 14px 34px rgba(0,0,0,.28),0 0 24px rgba(220,170,94,.035);
+    font:.43rem "Courier Prime",monospace;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    writing-mode:vertical-rl;
+    transform:translateY(-50%);
+    cursor:pointer;
+    transition:width .3s ease,color .3s ease,border-color .3s ease,background .3s ease;
+  }
+
+  .contribution-edge-tab::before{
+    content:"✦";
+    margin-bottom:9px;
+    color:#e7bd70;
+    font-size:.65rem;
+    text-shadow:0 0 12px rgba(255,202,105,.35);
+  }
+
+  .contribution-edge-tab:active,
+  .contribution-edge-tab:focus-visible{
+    width:39px;
+    outline:none;
+    color:rgba(255,224,168,.96);
+    border-color:rgba(231,189,112,.5);
+    background:rgba(12,13,17,.94);
+  }
+
+  /* Keep field content from sitting underneath the bookmark edge. */
+  .thought-field{padding-right:10px}
+}
+
+/* Desktop/tablet do not get the mobile bookmark. */
+@media (min-width:681px){
+  .contribution-edge-tab{display:none}
+}
+@media (max-width: 680px) {
+  .curiosity-topbar {
+    top: 0;
+    margin: 0;
+
+    background: rgba(3, 7, 15, 0.96);
+
+    border-bottom:
+      1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .thought-field {
+    top: 62px;
+    margin-top: 0;
+  }
+
+  .curiosity-page {
+    padding-top: 0;
+  }
+}
+/* ============================================================
+   MOBILE — TIGHTEN TOP COMPOSITION
+   ============================================================ */
+
+@media (max-width: 680px) {
+
+  /* Keep the field directly beneath the 62px navigation */
+  .thought-field {
+    top: 62px;
+    margin-top: 0;
+  }
+
+  /*
+    Bring the editorial heading upward.
+    We still preserve some intentional breathing room.
+  */
+  .field-heading {
+    top: 14px;
+  }
+
+  /*
+    Slightly tighten the spacing between archive code
+    and the main title.
+  */
+  .field-code {
+    margin-bottom: 12px;
+  }
+
+  /*
+    Tighten title → description slightly.
+  */
+  .field-heading p {
+    margin-top: 22px;
+  }
+}
+/* ============================================================
+   MOBILE — PULL PHYSICAL ARCHIVE TOWARD INTRO
+   Desktop completely untouched.
+   ============================================================ */
+
+@media (max-width: 680px) {
+
+  /* Draft 10 */
+  .field-fragment.fragment-feature {
+    top: 25.5% !important;
+  }
+
+  /* Telephone follows it upward */
+  .field-fragment.fragment-telephone {
+    top: 34% !important;
+  }
+
+  /* First memories can enter the composition sooner too */
+  .field-fragment.fragment-polaroid {
+    transform:
+      translate(-50%, -50%)
+      rotate(var(--fragment-rotation));
+  }
+}
+/* Mobile positioning adjustment */
+@media (max-width: 680px) {
+  .marginalia-one {
+    top: 31%;
+    left: 63%;
+  }
+}
