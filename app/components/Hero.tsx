@@ -34,8 +34,6 @@ type CuriosityImage =
       lines: string[];
     };
 
-const NEXUS_SEEN_KEY = "nexus-intro-seen-v1";
-
 const curiosityImages: CuriosityImage[] = [
   {
     id: 1,
@@ -102,9 +100,6 @@ const curiosityImages: CuriosityImage[] = [
   },
 ];
 
-/*
-  These are now REAL destinations rather than placeholder projects.
-*/
 const selectedProjects = [
   {
     id: "01",
@@ -142,37 +137,24 @@ export default function Hero() {
   const timersRef = useRef<number[]>([]);
 
   /*
-    FIRST-VISIT LOGIC
+    ROUTING
 
-    If the visitor has already completed Nexus once,
-    returning home immediately restores the divided hub.
+    /        = true homepage
+    /?hub=1 = Science / Poetry / Curiosity hub
 
-    ?hub=1 explicitly requests the hub as well.
+    No localStorage is involved. The plain domain always means home.
   */
   useEffect(() => {
-    try {
-      const params = new URLSearchParams(window.location.search);
+    const params = new URLSearchParams(window.location.search);
+    const wantsHub = params.get("hub") === "1";
 
-const wantsHub = params.get("hub") === "1";
-const wantsHome = params.get("home") === "1";
-
-const hasSeenIntro =
-  window.localStorage.getItem(NEXUS_SEEN_KEY) === "true";
-
-if (wantsHub) {
-  setStage("divided");
-} else if (wantsHome) {
-  setStage("idle");
-} else if (hasSeenIntro) {
-  setStage("divided");
-}
-    } catch {
-      // If storage is unavailable, normal intro behavior remains.
-    }
-
+    setStage(wantsHub ? "divided" : "idle");
     setReady(true);
   }, []);
 
+  /*
+    Clear any unfinished animation timers when this component unmounts.
+  */
   useEffect(() => {
     return () => {
       timersRef.current.forEach((timer) =>
@@ -189,26 +171,14 @@ if (wantsHub) {
   ) => {
     const timerId = window.setTimeout(() => {
       setStage(nextStage);
-
-      /*
-        The moment Nexus becomes the hub,
-        remember that the visitor has experienced the intro.
-      */
-      if (nextStage === "divided") {
-        try {
-          window.localStorage.setItem(
-            NEXUS_SEEN_KEY,
-            "true"
-          );
-        } catch {
-          // Site still works if storage is unavailable.
-        }
-      }
     }, delay);
 
     timersRef.current.push(timerId);
   };
 
+  /*
+    Original Nexus entrance animation.
+  */
   const handleOrbClick = () => {
     if (stage !== "idle") return;
 
@@ -230,8 +200,9 @@ if (wantsHub) {
   };
 
   /*
-    Used by NEXUS and MIND MAP while already on the homepage.
-    No animation. Just restore the actual map.
+    Jump directly to the divided Nexus hub.
+
+    Used by Mind Map while already on the homepage.
   */
   const openNexusHub = (
     event?: React.MouseEvent<HTMLAnchorElement>
@@ -248,12 +219,14 @@ if (wantsHub) {
 
     setStage("divided");
 
-    try {
-      window.localStorage.setItem(
-        NEXUS_SEEN_KEY,
-        "true"
-      );
-    } catch {}
+    /*
+      Keep the browser URL synchronized with the visual state.
+    */
+    window.history.replaceState(
+      null,
+      "",
+      "/?hub=1"
+    );
 
     window.scrollTo({
       top: 0,
@@ -264,8 +237,8 @@ if (wantsHub) {
   const isFocusingOrLater = stage !== "idle";
 
   /*
-    Prevent a one-frame flash of the original intro while
-    localStorage is being checked.
+    Avoid flashing the homepage for a frame before we know
+    whether the visitor requested / or /?hub=1.
   */
   if (!ready) {
     return (
@@ -278,18 +251,29 @@ if (wantsHub) {
 
   return (
     <main className="nexus-page-wrapper">
+      {/* =====================================================
+          SITE HEADER
+          ===================================================== */}
+
       <header className="site-header">
+        {/*
+          NEXUS = the actual homepage.
+          No ?home=1 and no hub behavior.
+        */}
         <a
-  href="/?home=1"
-  className="site-logo"
->
-  NEXUS
-</a>
+          href="/"
+          className="site-logo"
+        >
+          NEXUS
+        </a>
 
         <nav
           className="site-nav"
           aria-label="Primary navigation"
         >
+          {/*
+            MIND MAP = the three-world Nexus hub.
+          */}
           <a
             href="/?hub=1"
             className="nav-item"
@@ -298,15 +282,25 @@ if (wantsHub) {
             Mind Map
           </a>
 
-          <a href="#work" className="nav-item">
+          <a
+            href="#work"
+            className="nav-item"
+          >
             Archive
           </a>
 
-          <a href="#contact" className="nav-item">
+          <a
+            href="#contact"
+            className="nav-item"
+          >
             Inquiries
           </a>
         </nav>
       </header>
+
+      {/* =====================================================
+          NEXUS HERO
+          ===================================================== */}
 
       <section
         id="nexus"
@@ -351,6 +345,10 @@ if (wantsHub) {
           stage={stage}
           onOrbClick={handleOrbClick}
         />
+
+        {/* ===================================================
+            HUMAN + PERSONAL CURIOSITY STRIP
+            =================================================== */}
 
         <div
           className={`curiosity-strip-container ${
@@ -459,33 +457,42 @@ if (wantsHub) {
               <p className="stanza-text">
                 I don&apos;t wish to end this poem.
               </p>
+
               <p className="stanza-text">
                 This feeling of completeness, and
                 fulfillment.
               </p>
+
               <p className="stanza-text">
                 My heart vetoes to let go of it.
               </p>
+
               <p className="stanza-text">
                 I have packed it within my ribs.
               </p>
+
               <p className="stanza-text">
                 And they will leave once I depart from
                 this earth.
               </p>
+
               <p className="stanza-text">
                 It will decompose into flowers and bugs.
               </p>
+
               <p className="stanza-text">
                 Let the sun take away my future ones.
               </p>
+
               <p className="stanza-text">
                 From the bugs, I will feed for days.
               </p>
+
               <p className="stanza-text">
                 From the flowers, I will slowly fade
                 away.
               </p>
+
               <p className="stanza-text">
                 The eternal existence I will never go
                 away.
