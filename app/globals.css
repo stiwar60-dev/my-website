@@ -400,8 +400,6 @@ a {
 @media (max-width: 1100px) { .section-title { font-size: 2.8rem; } .about-asymmetric { gap: 44px; } .work-grid-asymmetric { gap: 24px; } }
 @media (max-width: 900px) {
   .main-orb-wrapper.focus, .main-orb-wrapper.approach, .main-orb-wrapper.bubble, .main-orb-wrapper.reflection { transform: translate(-50%, -50%) scale(1.2); }
-  .seamless-orb-container.left, .seamless-orb-container.right { transform: translate(calc(-50% - 14vw), calc(-50% - 6vh)) scale(0.88); }
-  .seamless-orb-container.center { transform: translate(-50%, calc(-50% - 18vh)) scale(0.88); }
   .identity .seamless-orb-container.left, .divided .seamless-orb-container.left { transform: translate(calc(-50% - 14vw), calc(-50% - 6vh)) scale(1); }
   .identity .seamless-orb-container.center, .divided .seamless-orb-container.center { transform: translate(-50%, calc(-50% - 18vh)) scale(1); }
   .identity .seamless-orb-container.right, .divided .seamless-orb-container.right { transform: translate(calc(-50% + 14vw), calc(-50% - 6vh)) scale(1); }
@@ -426,9 +424,6 @@ a {
   .sub-orb-glass { width: 62px; height: 62px; }
   .reflection-quote-wrap { width: min(92vw, 460px); top: calc(50% + 78px); }
   .reflection-line-1, .reflection-line-2 { font-size: clamp(0.95rem, 4vw, 1.15rem); }
-  .seamless-orb-container.left { transform: translate(calc(-50% - 22vw), calc(-50% - 3vh)) scale(0.9); }
-  .seamless-orb-container.center { transform: translate(-50%, calc(-50% - 17vh)) scale(0.9); }
-  .seamless-orb-container.right { transform: translate(calc(-50% + 22vw), calc(-50% - 3vh)) scale(0.9); }
   .identity .seamless-orb-container.left, .divided .seamless-orb-container.left { transform: translate(calc(-50% - 22vw), calc(-50% - 3vh)) scale(1); }
   .identity .seamless-orb-container.center, .divided .seamless-orb-container.center { transform: translate(-50%, calc(-50% - 17vh)) scale(1); }
   .identity .seamless-orb-container.right, .divided .seamless-orb-container.right { transform: translate(calc(-50% + 22vw), calc(-50% - 3vh)) scale(1); }
@@ -694,4 +689,132 @@ a {
       translate(-50%, -50%)
       scale(1.06);
   }
+}
+
+/* ============================================================
+   NEXUS — CLEAN MOBILE OVERRIDES
+   Desktop animation remains the source of truth.
+   On phone we change layout and final resting geometry only.
+   ============================================================ */
+@media (max-width: 640px) {
+  html, body { width: 100%; max-width: 100%; overflow-x: hidden; }
+  .nexus-page-wrapper { width: 100%; max-width: 100vw; overflow-x: hidden; }
+
+  /* Header */
+  .site-header { height: 58px; padding: 0 16px; gap: 12px; background: rgba(7,11,20,.94); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); }
+  .site-logo { flex: 0 0 auto; font-size: 1rem; letter-spacing: .14em; }
+  .site-nav { min-width: 0; display: flex; align-items: center; justify-content: flex-end; gap: 11px; }
+  .nav-item { white-space: nowrap; font-size: .5rem; letter-spacing: .08em; }
+
+  /* Hero composition */
+  .nexus-hero { min-height: 100svh; height: 100svh; padding: 58px 18px 24px; overflow: hidden; }
+  .nexus-name { top: 78px; width: calc(100% - 36px); white-space: normal; text-align: center; font-size: .52rem; line-height: 1.5; letter-spacing: .2em; }
+  .intro-line { width: calc(100vw - 42px); white-space: normal; text-align: center; line-height: 1.06; }
+  .line-1 { --x0: -4vw; --y0: -28vh; --yf: -26vh; font-size: clamp(1.85rem,9.2vw,2.55rem); }
+  .line-2 { --x0: 4vw; --y0: -18vh; --yf: -16vh; font-size: clamp(1.7rem,8.4vw,2.35rem); }
+  .line-3 { --x0: -4vw; --y0: 15vh; --yf: 15vh; font-size: clamp(1.22rem,5.9vw,1.65rem); }
+  .line-4 { --x0: 4vw; --y0: 25vh; --yf: 25vh; font-size: clamp(1.16rem,5.5vw,1.55rem); }
+
+  /*
+     ORB ANIMATION
+     Intentionally DO NOT redefine focus/approach/bubble/reflection,
+     budding, separation, the goo filter, transition duration, easing,
+     or daughter-orb size here.
+
+     Those all inherit the exact desktop rules at lines above:
+       mother: 1 -> 1.25 -> 1.28 -> fade/blur at budding
+       daughters: center -> 8vw/10vh -> 18vw/22vh
+       size: 72px
+       transition: 2.8s cubic-bezier(.2,.8,.2,1)
+       filter: url(#gooey-polished)
+  */
+
+  /* Phone has no hover, so the invitation is visible. */
+  .main-orb-wrapper.idle .orb-enter-label {
+    top: calc(100% + 16px);
+    opacity: .82;
+    color: rgba(195,233,255,.82);
+    transform: translateX(-50%) translateY(0);
+    font-size: .48rem;
+    letter-spacing: .22em;
+  }
+  .main-orb-wrapper.idle::after { content:""; position:absolute; left:50%; top:50%; width:112px; height:112px; transform:translate(-50%,-50%); border-radius:50%; }
+
+  /* Reflection text: layout-only adjustment. */
+  .reflection-quote-wrap { top: calc(50% + 92px); width: calc(100vw - 42px); }
+  .reflection-line-1, .reflection-line-2 { font-size: 1rem; line-height: 1.5; }
+
+  /*
+     Only the FINAL resting geometry changes for portrait.
+     Budding and separation above this point are still the desktop animation.
+     These values keep the three destinations readable on a narrow screen.
+  */
+  .seamless-orb-container.identity.left,
+  .seamless-orb-container.divided.left { transform: translate(calc(-50% - 25vw), calc(-50% - 6vh)) scale(1); pointer-events: auto; }
+  .seamless-orb-container.identity.center,
+  .seamless-orb-container.divided.center { transform: translate(-50%, calc(-50% - 21vh)) scale(1); pointer-events: auto; }
+  .seamless-orb-container.identity.right,
+  .seamless-orb-container.divided.right { transform: translate(calc(-50% + 25vw), calc(-50% - 6vh)) scale(1); pointer-events: auto; }
+
+  .orb-num { font-size: .92rem; }
+  .sub-orb-label { font-size: .56rem; letter-spacing: .14em; }
+  .orb-focus-card { display: none !important; }
+
+  /* Milestones remain hidden until divided. */
+  .curiosity-strip-container { visibility:hidden; opacity:0; pointer-events:none; }
+  .nexus-hero.divided { display:block; height:auto; min-height:100svh; padding:58px 0 0; overflow:visible; text-align:center; }
+  .nexus-hero.divided .intro-stack, .nexus-hero.divided .nexus-name, .nexus-hero.divided .reflection-quote-wrap, .nexus-hero.divided .scroll-hint { display:none !important; }
+  .nexus-hero.divided .nexus-system { position:relative; inset:auto; width:100%; height:500px; min-height:500px; }
+  .nexus-hero.divided .gooey-division-wrap { position:absolute; inset:0; }
+  .nexus-hero.divided .curiosity-strip-container.visible { position:relative; left:auto; bottom:auto; width:100%; max-width:none; margin:-34px auto 0; padding:0 18px 42px; gap:18px; transform:none; visibility:visible; opacity:1; pointer-events:auto; }
+  .strip-caption { width:100%; padding-bottom:10px; border-bottom:1px solid rgba(138,215,255,.14); text-align:left; font-size:.58rem; line-height:1.5; letter-spacing:.14em; }
+  .curiosity-grid { display:grid; grid-template-columns:1fr; gap:18px; width:100%; margin-top:0; }
+  .curiosity-card { display:grid; grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr); width:100%; min-width:0; height:auto; min-height:176px; overflow:hidden; flex:none; border-radius:10px; background:rgba(11,17,32,.78); border:1px solid rgba(255,255,255,.1); transform:none !important; }
+  .curiosity-card > img { grid-column:1; grid-row:1; width:100%; height:100%; min-height:176px; object-fit:cover; filter:grayscale(20%) brightness(.78); transform:none !important; }
+  .curiosity-card .poetry-stanza-preview { grid-column:1; grid-row:1; width:100%; height:100%; min-height:176px; padding:12px 10px; border-radius:0; filter:none; font-size:.45rem; line-height:1.38; justify-content:center; }
+  .poetry-stanza-preview .stanza-line { white-space:normal; overflow:visible; text-overflow:initial; }
+  .card-overlay-caption { position:relative; inset:auto; grid-column:2; grid-row:1; display:flex; flex-direction:column; justify-content:center; padding:16px 14px; opacity:1 !important; background:linear-gradient(135deg,rgba(13,20,36,.97),rgba(7,11,20,.99)); transform:none !important; }
+  .caption-tag { margin-bottom:6px; font-size:.45rem; line-height:1.3; letter-spacing:.12em; }
+  .caption-title { font-size:1rem; line-height:1.08; }
+  .caption-desc { display:-webkit-box; margin:7px 0 10px; font-size:.64rem; line-height:1.42; -webkit-line-clamp:4; -webkit-box-orient:vertical; overflow:hidden; }
+  .caption-link { margin-top:auto; font-size:.49rem; line-height:1.35; letter-spacing:.08em; }
+  .curiosity-card:hover { flex:none; transform:none !important; border-color:rgba(255,255,255,.1); }
+  .curiosity-card:hover img { filter:grayscale(20%) brightness(.78); transform:none !important; }
+  .curiosity-card:hover .poetry-stanza-preview { filter:none; }
+  .scroll-hint { display:none; }
+
+  /* Content sections */
+  .content-section { width:100%; padding:74px 20px; scroll-margin-top:68px; }
+  .section-tag { margin-bottom:10px; font-size:.54rem; line-height:1.4; letter-spacing:.18em; }
+  .section-title { margin-bottom:18px; font-size:2.45rem; line-height:.98; }
+  .section-subtitle { max-width:none; margin-bottom:30px; font-size:.88rem; line-height:1.65; }
+  .about-asymmetric { display:flex; flex-direction:column; gap:36px; }
+  .about-main-col { width:100%; }
+  .about-direct-text { max-width:none; font-size:1.02rem; line-height:1.76; }
+  .about-inline-visual { width:100%; max-width:none; margin-top:28px; }
+  .poetry-screenshot-display { width:100%; padding:20px 18px; font-size:.8rem; line-height:1.62; border-radius:8px; }
+  .visual-caption { font-size:.6rem; line-height:1.5; }
+  .about-marginalia { width:100%; padding:20px 18px; border-left:1px solid rgba(138,215,255,.35); border-top:1px solid rgba(138,215,255,.1); }
+  .margin-script-quote { font-size:1.42rem; }
+  .work-grid-asymmetric { display:flex; flex-direction:column; gap:18px; }
+  .work-card, .card-offset-0, .card-offset-1, .card-offset-2 { width:100%; min-height:0; padding:26px 22px; transform:none; }
+  .work-card-header { align-items:flex-start; gap:16px; }
+  .work-category { max-width:65%; text-align:right; font-size:.5rem; line-height:1.4; }
+  .work-card-title { font-size:1.55rem; line-height:1.08; }
+  .work-card-desc { margin-bottom:22px; font-size:.82rem; line-height:1.62; }
+  .work-card-link { font-size:.62rem; }
+  .contact-actions { display:flex; flex-direction:column; gap:12px; width:100%; }
+  .contact-btn { display:flex; align-items:center; justify-content:center; width:100%; min-height:50px; padding:14px 18px; text-align:center; font-size:.66rem; }
+}
+
+@media (max-width: 380px) {
+  .site-header { padding:0 12px; }
+  .site-nav { gap:8px; }
+  .nav-item { font-size:.45rem; letter-spacing:.05em; }
+  .site-logo { font-size:.9rem; }
+  .line-1 { font-size:1.8rem; }
+  .line-2 { font-size:1.65rem; }
+  .line-3, .line-4 { font-size:1.12rem; }
+  .curiosity-card { grid-template-columns:minmax(0,.82fr) minmax(0,1.18fr); }
+  .caption-desc { -webkit-line-clamp:3; }
 }
