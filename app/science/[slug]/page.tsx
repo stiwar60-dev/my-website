@@ -70,10 +70,14 @@ export default function ArticlePage({
 
       {/* Top navigation */}
       <nav className="reader-nav-sci">
-        <Link href="/science" className="obs-back">
-          ← The Singularity
-        </Link>
-      </nav>
+  <Link href="/science" className="obs-back">
+    ← The Singularity
+  </Link>
+
+  <Link href="/?hub=1" className="obs-back">
+    NEXUS
+  </Link>
+</nav>
 
       {/* Article hero */}
       <header className="article-hero">

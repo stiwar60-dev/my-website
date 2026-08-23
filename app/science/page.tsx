@@ -468,9 +468,9 @@ export default function SciencePage() {
 
       {/* HEADER */}
       <header className="obs-header">
-        <Link href="/" className="obs-back">
-          ← The Nexus
-        </Link>
+        <Link href="/?hub=1" className="obs-back">
+  ← Nexus
+</Link>
         <div className="obs-heading">
           {/* Rotating orbital diagram behind the heading */}
           <div className="hero-orbital" aria-hidden="true">

@@ -214,9 +214,9 @@ export default function PoetryPage() {
 
       {/* HEADER */}
       <header className="realm-header">
-        <Link href="/" className="realm-back">
-          ← The Nexus
-        </Link>
+        <Link href="/?hub=1" className="realm-back">
+  ← Nexus
+</Link>
         <div className="realm-heading">
           <span className="realm-eyebrow">VERSE &amp; ECHO</span>
           <h1 className="realm-title">Poetry</h1>

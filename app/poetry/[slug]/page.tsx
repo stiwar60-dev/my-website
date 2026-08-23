@@ -70,10 +70,14 @@ export default function PoemPage({
 
       {/* Top navigation */}
       <nav className="reader-nav">
-        <Link href="/poetry" className="realm-back">
-          ← All poems
-        </Link>
-      </nav>
+  <Link href="/poetry" className="realm-back">
+    ← All poems
+  </Link>
+
+  <Link href="/?hub=1" className="realm-back">
+    NEXUS
+  </Link>
+</nav>
 
       {/* Poem hero */}
       <header className="poem-hero">

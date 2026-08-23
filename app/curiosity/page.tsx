@@ -1,4 +1,5 @@
 'use client';
+import Link from 'next/link';
 import { useEffect, useMemo, useState } from 'react';
 import { scraps as seedScraps, type Scrap } from './notes';
 import BookEntrance from './components/BookEntrance';

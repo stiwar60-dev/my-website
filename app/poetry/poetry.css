@@ -713,3 +713,10 @@
   .field-wave, .field-light, .seed, .heart-dec, .poem-hero-cover, .reader-glow { animation: none; transition: none; }
   .stanza-line { transition-duration: 0.2s; }
 }
+/* Nexus reader navigation */
+
+.reader-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

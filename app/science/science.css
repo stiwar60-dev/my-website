@@ -1315,3 +1315,10 @@
     transition-duration: 0.2s;
   }
 }
+/* Nexus reader navigation */
+
+.reader-nav-sci {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
