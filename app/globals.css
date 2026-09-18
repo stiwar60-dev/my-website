@@ -243,12 +243,15 @@ a {
 
 .gooey-division-wrap.active {
   opacity: 1;
-  filter: url(#gooey-polished);
+
+  filter: url("#gooey-polished");
+  -webkit-filter: url("#gooey-polished");
 }
 
 /* Smoothly remove the filter in the final stage instead of a snap */
 .gooey-division-wrap.divided {
   filter: none !important;
+  -webkit-filter: none !important;
 }
 
 /* THE THREE BUBBLES THAT EMERGE AND DRIFT */
