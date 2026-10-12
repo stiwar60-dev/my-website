@@ -600,31 +600,67 @@
   position: relative;
   z-index: 2;
 
-  /* Responsive width */
-  width: min(90%, 680px);
+  max-width: 720px;
   margin: 0 auto;
 
-  /* Prevent text from touching/cutting off at screen edges */
-  padding: 0 clamp(1rem, 4vw, 2rem);
+  padding: 0 20px;
   box-sizing: border-box;
 
-  /* Responsive typography */
-  font-size: clamp(0.95rem, 0.75rem + 0.6vw, 1.15rem);
-  line-height: 1.7;
-
-  /* Center the article itself */
   text-align: left;
 
-  /* Protect against unusually long words/strings */
+  white-space: normal;
+  overflow: visible;
+  text-overflow: clip;
   overflow-wrap: break-word;
-  word-wrap: break-word;
+}
+
+.poem-stanza {
+  margin-bottom: 3rem;
+}
+
+.stanza-line {
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(17px, 1.35vw, 21px);
+  line-height: 1.7;
+  letter-spacing: 0.01em;
+
+  margin: 0;
+  color: var(--ink);
+
+  white-space: normal;
+  overflow: visible;
+  text-overflow: clip;
+  overflow-wrap: break-word;
+
+  opacity: 0;
+  transform: translateY(14px);
+  filter: blur(3px);
+
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1),
+    filter 0.8s ease;
+}
+
+@media (max-width: 600px) {
+  .poem-article {
+    width: 100%;
+    max-width: 100%;
+    padding: 0 20px;
+    text-align: left;
+  }
+
+  .stanza-line {
+    font-size: 17px;
+    line-height: 1.75;
+  }
 }
 
 .poem-stanza { margin-bottom: 3rem; }
 
 .stanza-line {
   font-family: "Cormorant Garamond", serif;
-  font-size: 2vw;
+  /* font-size: 2vw; */
   line-height: 1.85;
   margin: 0;
   color: var(--ink);
@@ -639,7 +675,7 @@
 .stanza-break {
   text-align: center;
   color: var(--terracotta);
-  font-size: 0.85rem;
+  /* font-size: 0.85rem; */
   margin-top: 2.6rem;
   opacity: 0;
   transition: opacity 1s ease 0.5s;
@@ -658,7 +694,7 @@
 .end-note { font-family: "Cormorant Garamond", serif; font-style: italic; font-size: 1.08rem; color: var(--ink-soft); margin-bottom: 2rem; }
 .end-back {
   display: inline-block;
-  font-size: 0.8rem;
+  /* font-size: 0.8rem; */
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--terracotta);
